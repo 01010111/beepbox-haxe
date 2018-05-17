@@ -340,7 +340,7 @@ class Song
 			}
 			else if (command == 'b') 
 			{
-				var subStringLength:Int;
+				var subStringLength:Int = 0;
 				if (beforeThree)
 				{
 					channel = base64CharToInt[compressed.charAt(charIndex++)];
@@ -429,8 +429,7 @@ class Song
 							}
 							else
 							{
-								var shape:Dynamic;
-								var pinObj:Dynamic;
+								var shape:Shape;
 								var pitch:Int;
 								if (useOldShape)
 								{
@@ -452,7 +451,7 @@ class Song
 									for (j in 0...shape.pinCount)
 									{
 										shape.length += bits.readPartDuration();
-										pinObj = {
+										var pinObj:PinObj = {
 											pitchBend: bits.read(1) == 1,
 											time: shape.length,
 											volume:  bits.read(2),
@@ -976,6 +975,21 @@ class BitFieldReader
 		return readLongTail(1, 3) * (read(1) > 0 ? -1 : 1);
 	}
 
+}
+
+typedef Shape = {
+	pitchCount:Int,
+	pinCount:Int,
+	initialVolume:Int,
+	pins:Array<PinObj>,
+	length:Int,
+	bendCount:Int
+}
+
+typedef PinObj = {
+	pitchBend:Bool,
+	time:Int,
+	volume:Int,
 }
 
 // { region **NOT NEEDED FOR PLAYBACK**
