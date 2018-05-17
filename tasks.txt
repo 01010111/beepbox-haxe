@@ -1,0 +1,347 @@
+√ create tone
+√ delete tone
+√ adjust start/end of new tone
+√ adjust pitch of new note
+√ adjust start/end of existing tone
+√ add note to tone for arpeggio
+√ set scale constraint
+√ allow deleting existing notes off the scale
+√ set key
+√ 3 channels
+√ detect when the song stops and restart it. force stop the old SoundChannel for sanity.
+√ separate song editing from Main.mxml, put in SongEditor.mxml
+√ create Track.mxml, which shows the pattern number of each bar, the playhead
+√ 8 patterns for lead, 4 for harmony and bass, assign with number keys
+√ 16 bars
+√ select channel with up and down arrows
+√ select bar with left and right arrows
+√ custom looping
+√ pausing with space, skipping bars with []
+√ tempo dropdown: fast, med, slow
+√ save, load
+√ beat count, part count
+√ show the pitch letters: C, C#, D, etc
+√ show ghosts of the notes in the other channels
+√ waveform choices
+√ bitcrushing the triangle wave
+√ noise channel
+√ Export to WAV
+√ rearrange and hide panels to emphasize important features for beginners. flags for showing fifth, other channels, note names
+√ illustrate loop area better
+√ allow up to 8 patterns in all channels?
+√ when you hover over a selected pattern/channel, instead of the box preview, show a triangle up or down depending on where your mouse is. the other triangle is hollowed out.
+√ fix wrap around clipping bug on export
+√ fix focus bug: spacebar reexports song!
+√ The start of a tone can always snap to an existing tone end.
+√ Be more lenient about starting at beats 2 and 3.
+√ when bending pitch, multiply over each sample instead of adding.
+√ copy length to default when editing length of notes. 
+√ sawtooth!
+√ piano along left side to preview notes? replace "show letters"
+√ instead of conditionally reseting the period, try period -= int(period). benchmark!
+√ pressing [] shouldn't escape the loop
+√ button for export, clean slate, undo/redo, pause
+√ replace ChangeFragment with ChangeSong, preserve pattern objects for undo history
+√ compress bar data: 2 bars per character.
+√ compress tone shapes
+√ compress/decompress notes. confirm drums work. empirically optimize prev note count.
+√ decompress tone shapes
+√ get a domain name!
+√ put song in url fragment
+√ to save on file size, get rid of that flex text field at the top. 
+√ put on website!
+√ set up some basic html
+√ new waves
+√ source control
+√ karplus strong filter + decay
+√ separate main file for offline.
+√ take focus from "save as wav" button after clicking it!
+√ changing preferences doesn't need to be undoable but should update display.
+√ save "preferences" to localSharedObject
+√ pausing should actually stop SampleDataEvents
+√ as3 lib usage example
+√ fix wave drop down menu
+√ create README
+√ create public version number
+√ reenable filter in one drop down menu
+√ tremelo/vibrato choices
+√ for chorus, have two periods at multiples of the main freq. jitter on arpeggio slices?
+√ volume options per channel
+√ add license to code
+√ link to source in html
+√ link to offline version
+√ add copyright disclaimer to page
+√ link to twitter
+√ donation button
+√ rename checkmark wave
+√ fix piano initialize after mouse event error
+√ tweak vibrato depth and speed
+√ when tone ends reset period, fixes harp pops and union chorus phase
+√ slow down decay soft
+√ whole tone scale
+√ increment format number, port settings from old version
+√ center waves on average amplitude to avoid pops after lowpass
+√ move the playhead graphic gradually toward the next position. 
+√ always fade out volume over last arpeggio
+√ attack: hard, soft, slide. don't reset period when sliding!
+√ octave scroll bar, with preference option to disable it
+√ load old songs with octave offset, default pitch... 
+√ bring back the old constant volume option, and make it the default for songs loaded with the old format.
+√ widen the window to allow the "envelope" label
+√ copy paste patterns
+√ put the edit buttons in one menu. undo, copy/paste, clean slate, etc
+√ copy and paste keyboard commands
+√ perform dynamic range compression, increase base volume
+√ global volume control
+√ drum volume drop down menu
+√ clip rect on pattern editor
+√ indicate recommended beats/bar 8 somehow
+√ fifths chorus option
+√ create pitch bend, triggered by vertical dragging. 
+√ when adding arpeggio to a pitch bend, offset the arpeggio note by the current interval.
+√ don't create new arpeggios overlapping old arpeggios on pitch bends. 
+√ tweak hit detection on pitch bends so that it's a little tighter than a box
+√ When the pitch bend changes the initial pitch, recalibrate all notes of the tone. 
+√ don't let pitch bends escape the normal pitch range, especially with arpeggios. check both new arpeggios and new pitch bends.
+√ tweak rendering of pitch bends so that they don't become tiny threads. 
+√ volume pins
+√ volume dragging doesn't seem to be relative to previous volume
+√ dragging pitch bend off the side of the editor causes instability
+√ copy the volume pin structure for future tones, on a per channel basis.
+√ disable volume control when creating new tones with horizontal dragging. 
+√ reset default tone shape when cleaning slate
+√ dragging horizontally should drag the pins, not just the tone endpoints. 
+√ correctly move pins when swingifying, etc.
+√ convert pattern editor from mxml to a sprite
+√ modal dialog for customizing song duration
+√ able to access patterns over 9 with multiple keystrokes
+√ deserialize grouped channel settings
+√ make sure keyboard input is disabled in modal dialog
+√ serialize pattern id, using as many bits as needed.
+√ make sure that all possible pattern bitstrings fit within 4096 characters, or increase the limit. 
+√ make sure you can't copy patterns between drums and tonal instruments
+√ when shrinking bar count, make sure to bound loop, barScrollPos, playhead, etc
+√ use customized bar count, create GUI for scrolling bars somehow. 
+√ empty patterns get special 1-bit treatment
+√ serialize pattern instruments
+√ Benchmark synthesized vs precomputed noise. Precomputed would allow you to select non chip tune style noise. 
+√ rebalance drum volume range. bass is too quiet, cymbal too loud.
+√ each drum wave gets volume scale
+√ don't autoplay until URL fragment has been passed through
+√ drums get custom lowpass based on change rate
+√ can drums use the other envelope/slide options?
+√ tones that fade out volume completely shouldn't slide to next tone
+√ attack transitions that slide should let the decay filter smoothly rise again to better approximate strings/violin. also repeated notes shouldn't fade out automatically. 
+√ volume scaling from chorus effect: Synchronized waves are louder than waves that are almost but not quite the same frequency. Ratio: square root of two!
+√ medium sustain filter, slower sharp filter...
+√ make a non-editing embeddable player, in an iframe.
+√ server RSA authentication
+√ figure out song/playlist distinction in embedded players
+√ figure out data format for published songs. 
+√ mouse is attracted to active note half a note above cursor, but not below cursor, even overrides active note at cursor to highlight note above. 
+√ upper boundary isn't working with drum portamento
+√ retro drums really need more sharpness in upper range
+√ oops, could press tab a few times to get keyboard focus away from prompt
+√ generalize prompt functionality
+√ preliminary publish prompt
+√ fix piano pitch. still horribly broken!
+√ twitter stream on the side
+√ color-blind friendly colors
+√ buttons to transpose up and down to the next valid note
+√ dedicated silent 0 pattern
+√ take focus away from master volume after clicking it
+√ wav export intro, loop count, outro
+√ disable intro and outro checkboxes when the loop encompasses the entire song
+√ javascript mobile support!
+√ fix those flex dropdowns so they stop throwing errors
+√ Reverb
+√ optimize those Math functions in Synth
+√ make play and volume controls prettier
+√ MIDI export
+√ I broke safari export? (Did it work before? Apparently so? Either fix it or add warning)
+√ Put beepbox in focus on page load.
+√ Make the standalone version use js.
+√ minify
+√ Update the mobile instructions, "vibrate switch" isn't a thing anymore.
+√ use the viewBox size thing to make the svg volume icon scalable.
+√ update flash version to include bowed chorus and reverb.
+√ embed: display notes scaled down to fill timeline. Only need to render it when hash changed.
+√ draw lines at bars and octaves
+√ when you click the link to the full editor, pause the embed player and open in new window.
+√ volume control
+√ make maximum size of volume slider and play button proportional to iframe size.
+√ allow dragging embedded playhead.
+√ make sure there's only one beep box player playing simultaneously. make a random guid on startup. When clicked play, set it to a variable in sessionStorage or localStorage. periodically check to make sure that it's still set to that, otherwise pause. 
+√ loop control
+√ rename note to pitch, tone to note. 
+√ octave scroll dragging should just be one History change, and it would be nice if dragging sliders didn't generate a bunch of undo history events. Ooh, let's do it for transpose too.
+√ merge undo history with browser history.
+√ optimize song.toString using charCodes. rename song.toString to song.toBase64String.
+√ rename "_on" to "_when". rename attack to envelope.
+√ when undoing changes selected bar, track editor should scroll to display it.
+√ If there's a drum note at the second-to-top slot, I can't add on to the top slot. Also, the whole snap-to-nearby-note-pitch thing makes less sense for drums anyway. 
+√ octave scroll bar shouldn't show white highlight when mouseover if current channel is drums.
+√ Let "back" and "escape" closed modal dialogs/prompts. 
+√ copy and paste across tabs? (local storage?)
+√ drum noise waves should be static, and generated on demand. (when play() is called, and at start of synth callback, check all drum instruments.) ensureDrumWavesExist()
+√ "custom/harmonize" chorus setting. lock first chorus voice to first pitch, the second voice arpeggios remaining pitches.
+√ move waves into Music structure.
+√ the "period" variables are the wrong name for what they mean. In Song, rename "instruments" to "instrumentCount", and other similar properties.
+√ add sixths and eighths rhythms.
+√ custom number of channels, up to 6 melodic and 2 drums. 
+	√ change song size prompt
+	√ import base64, export base64, import json, export json, export midi
+	√ check all those places where we check whether the channel is 3 to see if it is supposed to be drums.
+	√ in pattern editor, show all drum channels if appropriate preference is on.
+	√ track editor scaling
+	√ track colors based on channel type
+	√ _defaultPinChannels was broken.
+√ move Music to top, rename to Config.
+√ drumFilter shouldn't have hardcoded dependence on drum wave index.
+√ adjust json import to be backwards compatible with old names: romani, binary
+√ when exporting to midi with custom harmony, use correct simultaneous notes.
+√ new drum waves! :D (Thanks modded beepbox!)
+√ the play button should also have move playhead buttons next to it.
+√ responsive design layout. Okay, put play/edit/options/export on a horizontal line under loop editor, song settings below on left, and instrument settings below on right. 
+√ max-height of pattern editor (and piano/scrollbar) should be less than 100vh.
+√ the method for cycling patterns on a bar is inadequate on touchscreen... use select menu? also update instructions in index.html for changing patterns.
+√ highlight note edge extensions on touch
+√ midi channel export names should be in Config.
+√ random infinite loops when opening new song?
+√ when pattern is 0, show other channels anyway over black pattern editor.
+√ faster tempos
+√ layout was messed up if browser default font size is set to large.
+√ add a "clean slate"/"new song" button with a little dog-eared page icon.
+√ while I'm at it, the edit menu should have a pencil icon and the prefs should have a gear or wrench.
+√ rename barpattern to pattern, bareditor to patterneditor, attack to envelope...
+√ tempo slider could use tooltip for BPM
+√ add auto-follow and auto-play preferences. (I guess autoplay is only on computers? but defaults to true?)
+√ restructured song/channel/pattern/instrument js representation. 
+√ when you click the wave menu then use arrow keys to select drums the editor shouldn't lose focus.
+√ phase modulation:
+	√ interface to select type of channel.
+	√ modulation sliders, ratio selectors, envelop selectors.
+	√ make the piano share most of the instrument code with the notes, including arpeggio and operator frequencies... not that you can test that yet.
+	√ use custom pitches for each modulator if available
+	√ use "filterTime" for modulator decays
+	√ determine start and end operator envelopes.
+	√ rename old envelope to transition
+	√ separate phase for each operator, allow overriding fundamental frequency for each oscillator with notes.
+	√ algorithms, feedback!	
+	√ when there are multiple carriers, use a little chorus offset
+	√ adjust the total volume based on number of carriers
+	√ forward/backward compatible instrument url
+	√ operator envelope shapes
+	√ put a little number in front of every operator row.
+	√ JSON
+	√ update midi instrument export too.
+√ dragging sliders back and forth rapidly caused spurious undoing!
+√ geeze, I really don't like how undoing affects scrolling. is there anything I can do about that? Yes! (except on IE.)
+√ more flare speeds?
+√ wave filter with a higher cutoff, maybe none. "sustain full" or "none" depending on where I insert it in the list, may need new url version. can probably drop the word "sustain"? (if so, don't forget to remember it for json parsing!)
+√ rename sustain to steady, or just leave it off and say "medium" etc. Maybe rename "sharp" to "bright" or something. 
+√ for chip chorus, save a multiplication for one of the deltas, use ratio for other.
+√ scale channel#ChorusSign appropriately so that both wave signals have the correct volume for their pitch. Also the negative sign shouldn't be hardcoded, should be in Config.
+√ When increasing number of instruments, copy last existing instrument.
+√ reuse song channel objects beyond the first four when re-parsing a song url. Maybe don't reset instruments when reloading songs, to temporarily preserve settings for other instrument types. (but when loading older songs, newer instrument properties should have default values... okay here's the deal: reset the instruments when you get to the instrument type command, resetting only settings relevant to the instrument. However, for song data formats before six, reset all instruments immediately, because they don't have type commands... also drums? ugh this is a mess!)
+√ add a little "?" next to "Type" when in FM mode, brings up a popup explaining how to use it, link to a song showcasing some ideas to get you started.
+√ while we're at it, custom harmony could use a "?" hint. Anything else?
+√ the instructions in index.html need some work.
+√ seamless transitions sound poppy. maybe seamless transitions should always fade out if the next note is null AND the note ends before the end of the bar. (Since we don't know yet whether the next bar continues the note.)
+√ pitch bends mixed with arpeggios don’t properly check min/max bounds
+√ put little numbers on the notes in the pattern editor when in FM mode and there's more than one pitch.
+√ dim oscillator envelope when volume/modulation is zero.
+√ loop could be dragged past ends of song, goes negative...
+√ couldn't sandwich note between two existing adjacent notes.
+√ Impasaurus said I made the retro drum sound more "periodic", whoops! Seems like the playhead keeps resetting to zero if there are gaps between drums... fixed!
+
+MAJOR REMAINING FEATURES:
+- embedded player
+- playlist editor
+- live keyboard/midi performance. (make sure piano can play while song is paused?)
+- audio worklet thread
+- instrument options: reverb,chorus,fadeout,distortion (applied to all enabled channels at once?)
+- remember recent songs
+- export mp3/ogg and audio buffer
+- translation
+
+MISC:
+- switching bars doesn't seem to split transposes into multiple change states?
+- in firefox, after selecting options, spacebar both reopens options and toggles play. Same problem with arrow keys, and even ctrl+brackets to change tabs. Apparently this is a known firefox bug. https://bugzilla.mozilla.org/show_bug.cgi?id=1019630
+- any more spectrum-based drums? floor tom, rack tom, ride cymbal, crash cymbal, snare, taiko, thunder, rain, fire, wind, maybe something that is just composed of a few inharmonic sine waves? bass (narrow band), shepard?
+- make the bot smarter. look at mentions, ignore "beepbox.co"... is it possible to drill down the redirects? maybe even parse the song and check if it has *any* notes? If the bot is good enough, use that instead of the search feature to display tweets on the front page.
+- remember recent songs in local shared object.
+- live piano should track time since note started for delayed vibrato, envelopes, decays, etc.
+- polyphonic fm midi export when there are multiple carriers. careful of overlapping note on/off events combined with slides...
+- Improve naming/documentation/api so it's clear how replaceState and prospectiveChange would interact if used together. prospectiveChange is only used for keeping track of oldValue while dragging to determine if a recorded change ultimately isNoop() and should be commmitted. replaceState is used when a change is overwriting the previously committed change, like transposing notes. However, prospective change erases information about previously *committed* change, making it unclear if replaceState should be used. Additionally, if multiple inputs are setting prospectiveChange simultaneously, it's unclear what the correct oldValue is and thus whether either change isNoop(). (I considered just committing prospective changes when a competing input is used, but that could result in frequent, useless commits while dragging two inputs simultaneously.)
+- maybe drums can have their own phase modulation mode, with different fractions? can modulator pitches bend at different rates? maybe the "envelopes" are basically the same except instead of controlling modulation they control pitch?
+- consider trying polyBLEPs on the basic waves, add an extra sample on the end of waves for interpolation based on frequency.
+- is it possible to get pitch slides and seamless transitions to detect notes across bars?
+- Bring beepbox and openscores coding styles closer together. See html functions, Synth-vs-SongPlayer
+- asynchronous export. worker thread?
+- a way to pre-generate a javascript sound buffer.
+- document synth api
+- export mp3 and ogg?
+- do audio worker threads work yet? Maybe feature-detect them? "AudioWorkerNode" vs "AudioWorkletNode"???
+
+EMBEDDED PLAYER:
+- put title in data format if provided. show "artist - title" in placeholder text. make sure it is sanitized for security. :)
+- maybe instead of squashing notes really tiny, consider scrolling them instead.
+- If you hold control or shift and click play, put "*" in storage instead, and allow anything to continue playing until it is replaced with a unique id again or manually paused. 
+- It probably doesn't make sense to integrate licenses like creative commons into the data format: it would imply more authority than is actually possible. It is up to users to say how they want their songs to be used. However, there should be an option to disable the "Edit in BeepBox" link, which would turn on basic encryption.
+- maybe add a download/export button? set default file title based on embedded title. (restricting character set appropriately)
+- support both flash and js embedded players?
+- should the author be able to set the default loop behavior?
+- under the file menu make a "share" button that displays a link that can be copied easily on mobile. 
+- the embed player itself should have a share button, for social media. which should link to a full page player instead of the editor?
+- These icons at the bottom of the embed player should have tooltips. 
+- maybe also make a full page song player, to link to from tweets when you don't want others to edit.
+- add "Share" or "HTML Embed" button under export? or "File" menu. Include "title" and "author" fields.
+- manifests to allow installing web app as mobile app. add note in instructions. add any new files to app.yaml
+- allow copying the url from the share menu, so the app version can hide the url bar.
+- sharing menu uses localSharedObject to remember your settings. same as editor volume?
+- should I make cards for twitter/facebook/slack/discord etc?
+- make sure bots ignore embed.html
+
+PLAYLIST EDITOR:
+- button to add more songs to list extracted from urls
+- update embed player to show all songs
+- song rearranging
+- song loop count
+- song fade-in/out
+- example songs on the website. Mario overworld? Tetris is basically public domain...
+- when starting at a bar where all tones are at the end of the bar, go ahead and skip the beginning of the bar, up to maybe one beat before the first tone.
+- put songs in browser history before/after pasting new songs.
+- offsite album/playlist player, with scrolling notes. hashbang urls, bot indexable. 
+- custom cover art, color schemes in playlists and embed player.
+
+MAYBE:
+- compacting and concatenating songs!
+- can I improve the interaction for volume envelope dragging and pitch dragging? illustrate volume envelope dragging to make it less confusing. 
+- snap to tone edges from other channels, to help making NES style harmonies. 
+- piano should still play when song is paused
+- translation/localization
+- I could parse the algorithm name, pull out the arrows and parens, rotate them 90 degrees and put them between the numbers. That's... diabolical. Wait that doesn't work for a single example: 1<3 2<4 because the numbers are out of order! >:( (What about feedback arrows?)
+- ugh, now tremolo is its own thing in FM... but I still have the old "effect" menu, with built-in tremolo? Maybe split that out into a separate thing so that both chip and FM can share the vibrato but not tremelo. Oh uh and maybe support more vibrato and tremelo speeds? Stop using that beautiful LFO? Hm, should I sync all tremelo to the beats? I kinda feel like that might actually work. I think two per beat would roughly correspond to the previous behavior. Should vibrato also sync to the beats? vibrato is trickier because people actually use it, and the vibrato speed has a big effect on the perceived timbre. Oh and of course this affects midi export too! tremelos: fast light heavy slow? light and heavy versions of three speeds? I could throw tremelo into the transition menu, but that's just moving the problem of redundant features in FM mode from one menu to another, and confusing that menu. I could leave it alone, but it's, uh, pretty ugly. I could make a new envelope menu for chip instruments with all the same options as operator envelopes for consistency, but the name "envelope" would confuse json parsing of old versions, and more importantly, would the new envelope menu have a "custom" option, or would custom envelopes always be applied?
+- Maybe add a "release" envelope that decays carrier volume until the next note starts and cuts it off? Or is that redundant since you can do the same thing with envelope editing? (could it extend into the next bar? for 0 pattern bars, use same instrument as previous bar?) Also on "0" pattern bars, use the previous instrument in that channel to continue the fade out.
+- Guitar distortion applying to some channels? new song setting: distortion, nonlinear mixing of channels... can't handle a range of volumes?
+- on mobile, should move the new/edit/prefs/export/import etc buttons to the bottom, just above beepbox 2.X, but keep the play/volume controls between the track editor and the song/instrument settings.
+- If adding new note and mouse drags at least two beats closer to start than previous max, then enter precise mode where you can have any length. If flipping to backwards or <= doc.parts, reset out of precise mode. 
+- make some button to bookmark the song in your browser
+- Get in touch with ludum dare about linking to beepbox: http://www.ludumdare.com/compo/tools/
+- get in touch with http://youcanmakevideogames.com/resources/music
+- multitouch?
+- replace piano/drums canvas with svg
+- illustrate arpeggio texture on tones with multiple notes, striped fill
+- on linux chrome, select drop downs use same background color as select element, it's a bit too bright when focused.
+- export fade in/out checkboxes
+- per-pattern drop down menu for instrument selection, prepopulated with common ones. 
+- circle of fifths display
+- Dim the column occupied by a tone to communicate mono voice?
+- visual feedback when a note is played
+- when on the same pitch as a tone in an adjacent part, and you're really close to it, and you drag horizontally, go ahead and drag that adjacent tone instead of creating a new one.
+- options for timing offset
+- phoneme filter option, imitate vowels and voiced consonants with IIR filters, fall back on noise channel for S, T, CH, SH, etc. 
+- a facebook app to put songs in your profile
+- preload some common tone shapes into the recentShape list. increment format number.
+- Make a bunch of asserts, that the tones don't overlap, that the pins have the same duration as the tones, that the pins are in order, etc. And trace out the arguments to every change constructor and maybe even trace out the entire bar document data after every step. 

@@ -1,0 +1,57 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+default_expiration: "3h"
+
+#skip_files:
+#- ^(.*/)?app\.yaml
+#- ^(.*/)?index\.yaml
+
+handlers:
+
+- url: /BeepBoxOnline\.swf
+  static_files: BeepBoxOnline.swf
+  upload: BeepBoxOnline\.swf
+  expiration: "12h"
+
+- url: /beepbox_editor\.js
+  static_files: beepbox_editor.js
+  upload: beepbox_editor\.js
+
+- url: /beepbox_editor\.min\.js
+  static_files: beepbox_editor.min.js
+  upload: beepbox_editor\.min\.js
+
+- url: /beepbox_synth\.js
+  static_files: beepbox_synth.js
+  upload: beepbox_synth\.js
+
+- url: /beepbox_synth\.min\.js
+  static_files: beepbox_synth.min.js
+  upload: beepbox_synth\.min\.js
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /robots\.txt
+  static_files: robots.txt
+  upload: robots\.txt
+
+- url: /
+  static_files: index.html
+  upload: index\.html
+  secure: always
+  redirect_http_response_code: 301
+
+- url: /synth_example\.html
+  static_files: synth_example.html
+  upload: synth_example\.html
+
+- url: /beepbox_offline\.html
+  static_files: beepbox_offline.html
+  upload: beepbox_offline\.html
+  http_headers:
+    Content-Type: text/html
+    Content-Disposition: "attachment; filename=beepbox_offline.html"
