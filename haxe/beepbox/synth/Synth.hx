@@ -24,7 +24,6 @@ SOFTWARE.
 
 // { region IMPORTS **COMPLETE**
 
-import openfl.Vector;
 import openfl.events.SampleDataEvent;
 import openfl.events.TimerEvent;
 import openfl.media.Sound;
@@ -71,7 +70,7 @@ class Synth
 	public var playing(get, never):Bool;
 	public var playhead(get, set):Float;
 	public var totalSamples(get, never):Int;
-	public var totalSeconds(get, never):Int;
+	public var totalSeconds(get, never):Float;
 	public var totalBars(get, never):Int;
 	
 	var _playhead:Float = 0.0;
@@ -133,6 +132,7 @@ class Synth
 			if (bar < song.loopStart) enableIntro = true;
 			if (bar > song.loopStart + song.loopLength) enableOutro = true;
 		}
+		return _playhead;
 	}
 
 	function get_totalSamples():Int
@@ -147,8 +147,8 @@ class Synth
 		return bars * samplesPerBar;
 	}
 	
-	inline function get_totalSeconds():Float return totalSamples / samplesPerSecond;
-	inline function get_totalBars():Float return song == null ? 0 : song.bars;
+	inline function get_totalSeconds():Float return (totalSamples / samplesPerSecond);
+	inline function get_totalBars():Int return song == null ? 0 : song.bars;
 
 	// } endregion
 
@@ -156,14 +156,12 @@ class Synth
 
 	public function new(?song:Song)
 	{
-		var i:Int;
-		
 		for (wave in waves)
 		{
-			var sum: Number = 0.0;
-			for (i = 0; i < wave.length; i++) sum += wave[i];
-			var average: Number = sum / wave.length;
-			for (i = 0; i < wave.length; i++) wave[i] -= average;
+			var sum:Float = 0.0;
+			for (i in 0...wave.length) sum += wave[i];
+			var average:Float = sum / wave.length;
+			for (i in 0...wave.length) wave[i] -= average;
 		}
 		
 		for (wave in drumWaves)
@@ -181,7 +179,7 @@ class Synth
 			} 
 			else if (drumWaves.indexOf(wave) == 1)
 			{
-				for (i = 0; i < 32767; i++) wave.push(Math.random() * 2.0 - 1.0);
+				for (i in 0...32767) wave.push(Math.random() * 2.0 - 1.0);
 			}
 		}
 		
@@ -348,8 +346,6 @@ class Synth
 			}
 		}
 
-		var i:Int;
-
 		var sampleTime = 1.0 / samplesPerSecond;
 		var samplesPerArpeggio = getSamplesPerArpeggio();
 
@@ -426,7 +422,7 @@ class Synth
 		var harmonyChorusSign:		Float;
 		var bassChorusSign:			Float;
 
-		var updateInstruments: Function = function() {
+		var updateInstruments = function() {
 			var instrumentLead:Int		= song.getPatternInstrument(0, bar);
 			var instrumentHarmony:Int	= song.getPatternInstrument(1, bar);
 			var instrumentBass:Int		= song.getPatternInstrument(2, bar);
@@ -900,7 +896,7 @@ class Synth
 		var beatsPerSecond:Float = beatsPerMinute / 60.0;
 		var partsPerSecond:Float = beatsPerSecond * song.parts;
 		var arpeggioPerSecond:Float = partsPerSecond * 4.0;
-		return samplesPerSecond / arpeggioPerSecond;
+		return Math.floor(samplesPerSecond / arpeggioPerSecond);
 	}
 
 	// } endregion
