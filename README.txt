@@ -1,3 +1,5 @@
+** HEY THIS DOESN'T WORK :P **
+
 This is the source code for BeepBox, an online tool for sketching and sharing 
 chiptune melodies. All of the source code here is available under the MIT 
 license. 
