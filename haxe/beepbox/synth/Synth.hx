@@ -67,6 +67,12 @@ class Synth
 	public var enableOutro:Bool = false;
 	public var loopCount:Int = -1;
 	public var volume:Float = 1.0;
+
+	public var playing(get, never):Bool;
+	public var playhead(get, set):Float;
+	public var totalSamples(get, never):Int;
+	public var totalSeconds(get, never):Int;
+	public var totalBars(get, never):Int;
 	
 	var _playhead:Float = 0.0;
 	var bar:Int = 0;
@@ -103,60 +109,46 @@ class Synth
 
 	// } endregion
 
-	// { region GETTERS/SETTERS
+	// { region GETTERS/SETTERS **COMPLETE**
 
-	/* TODO:
-		public function get playing(): Boolean {
-			return !paused;
+	inline function get_playing():Bool return !paused;
+	inline function get_playhead():Float return _playhead;
+
+	function set_playhead(value:Float)
+	{
+		if (song != null)
+		{
+			_playhead = Math.max(0, Math.min(song.bars, value));
+			var remainder:Float = _playhead;
+			bar = Math.floor(remainder);
+			remainder = song.beats * (remainder - bar);
+			beat = Math.floor(remainder);
+			remainder = song.parts * (remainder - beat);
+			part = Math.floor(remainder);
+			remainder = 4 * (remainder - part);
+			arpeggio = Math.floor(remainder);
+			var samplesPerArpeggio:Float = getSamplesPerArpeggio();
+			remainder = samplesPerArpeggio * (remainder - arpeggio);
+			arpeggioSamples = Math.floor(samplesPerArpeggio - remainder);
+			if (bar < song.loopStart) enableIntro = true;
+			if (bar > song.loopStart + song.loopLength) enableOutro = true;
 		}
-		
-		public function get playhead(): Number {
-			return _playhead;
-		}
-		
-		public function set playhead(value: Number): void {
-			if (song != null) {
-				_playhead = Math.max(0, Math.min(song.bars, value));
-				var remainder: Number = _playhead;
-				bar = Math.floor(remainder);
-				remainder = song.beats * (remainder - bar);
-				beat = Math.floor(remainder);
-				remainder = song.parts * (remainder - beat);
-				part = Math.floor(remainder);
-				remainder = 4 * (remainder - part);
-				arpeggio = Math.floor(remainder);
-				var samplesPerArpeggio: Number = getSamplesPerArpeggio();
-				remainder = samplesPerArpeggio * (remainder - arpeggio);
-				arpeggioSamples = Math.floor(samplesPerArpeggio - remainder);
-				if (bar < song.loopStart) {
-					enableIntro = true;
-				}
-				if (bar > song.loopStart + song.loopLength) {
-					enableOutro = true;
-				}
-			}
-		}
-		
-		public function get totalSamples(): int {
-			if (song == null) return 0;
-			var samplesPerBar: int = getSamplesPerArpeggio() * 4 * song.parts * song.beats;
-			var loopMinCount: int = loopCount;
-			if (loopMinCount < 0) loopMinCount = 1;
-			var bars: int = song.loopLength * loopMinCount;
-			if (enableIntro) bars += song.loopStart;
-			if (enableOutro) bars += song.bars - (song.loopStart + song.loopLength);
-			return bars * samplesPerBar;
-		}
-		
-		public function get totalSeconds(): Number {
-			return totalSamples / samplesPerSecond;
-		}
-		
-		public function get totalBars(): Number {
-			if (song == null) return 0.0;
-			return song.bars;
-		}
-	*/
+	}
+
+	function get_totalSamples():Int
+	{
+		if (song == null) return 0;
+		var samplesPerBar:Int = getSamplesPerArpeggio() * 4 * song.parts * song.beats;
+		var loopMinCount:Int = loopCount;
+		if (loopMinCount < 0) loopMinCount = 1;
+		var bars:Int = song.loopLength * loopMinCount;
+		if (enableIntro) bars += song.loopStart;
+		if (enableOutro) bars += song.bars - (song.loopStart + song.loopLength);
+		return bars * samplesPerBar;
+	}
+	
+	inline function get_totalSeconds():Float return totalSamples / samplesPerSecond;
+	inline function get_totalBars():Float return song == null ? 0 : song.bars;
 
 	// } endregion
 
